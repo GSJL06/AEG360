@@ -3,6 +3,17 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 }
+import java.util.Properties
+import java.io.FileInputStream
+
+// ... (otras importaciones y plugins)
+
+// Cargar propiedades desde local.properties
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties") // Accede al archivo en la raíz del proyecto
+if (localPropertiesFile.exists()) {
+    localProperties.load(FileInputStream(localPropertiesFile))
+}
 
 android {
     namespace = "com.ejemplo.educagestor360"
